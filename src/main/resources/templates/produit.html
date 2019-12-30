@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{fragments/layout}" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Plain Page</title>
+    <style type="text/css">
+        #yourContainer {
+            width: 400px;
+            height: 100px;
+        }
+
+        #yourContainer img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="right_col" data-layout-fragment="content" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Plain Page</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Search for..." type="text">
+                        <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Produit</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#"
+                                   role="button"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                        <table class="table table-striped"
+                               th:if="${not #lists.isEmpty(produits) && newproduit == null && updateproduit == null}">
+                            <th>
+                            <td>Libel</td>
+                            <td>Prix</td>
+                            <td>Prix Achat</td>
+                            <td>--</td>
+
+                            </th>
+                            <tr th:each="produit: ${produits}">
+                                <td>
+                                    <div class="media-left" id="yourContainer">
+
+                                        <a><img alt="" class="media-object" th:src="${produit.image}"></a>
+
+                                    </div>
+                                </td>
+                                <td th:text="${produit.libel}">Nom</td>
+                                <td th:text="${produit.prix}">Prenom</td>
+                                <td th:text="${produit.prixAchat}">Phone</td>
+                                <td>
+                                    <div><a th:href="@{'/deleteProduit/'+${produit.id}}"><i
+                                            class="fa fa-trash-o"></i></a></div>
+                                    <div><a th:href="@{'/updateProduit/'+${produit.id}}"><i class="fa fa-edit"></i></a>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div th:if="${newproduit != null && updateproduit == null}">
+
+                            <form method="post" th:action="@{/saveproduit}" th:object="${newproduit}">
+                                <div class="form-group">
+                                    <label>Libel</label>
+                                    <input class="form-control" th:field="*{libel}" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label>Prix</label>
+                                    <input class="form-control" th:field="*{prix}" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input class="form-control" th:field="*{prixAchat}" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Photo</label>
+                                    <input id="exampleInputFile" th:field="*{image}" type="file">
+                                </div>
+                                <button class="btn btn-default" type="submit">Submit</button>
+                            </form>
+
+                        </div>
+
+                        <div th:if="${ updateproduit != null}">
+
+                            <form method="post" th:action="@{/saveupdateproduit}" th:object="${updateproduit}">
+                                <div class="form-group">
+                                    <label>Libel</label>
+                                    <input class="form-control" th:field="*{libel}" type="text">
+                                    <input class="form-control" hidden="true" th:field="*{id}" type="hidden"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Prix</label>
+                                    <input class="form-control" th:field="*{prix}" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label>Prix Achat</label>
+                                    <input class="form-control" th:field="*{prixAchat}" type="text">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Photo</label>
+                                    <input id="exampleInputFile" th:field="*{image}" type="file">
+                                </div>
+                                <button class="btn btn-default" type="submit">Submit</button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

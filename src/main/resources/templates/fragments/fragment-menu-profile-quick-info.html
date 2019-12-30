@@ -1,0 +1,10 @@
+<div class="profile" data-th-fragment="menu-profile-quick-info" xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.thymeleaf.org">
+    <div class="profile_pic">
+        <img alt="..." class="img-circle profile_img" th:src="${user.getImage()}">
+    </div>
+    <div class="profile_info">
+        <span>Welcome,</span>
+        <h2 th:utext="${#request.userPrincipal.name}">CrunchDroid</h2>
+    </div>
+</div>

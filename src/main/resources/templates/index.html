@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="../../favicon.ico" rel="icon"/>
+
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/webjars/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/webjars/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="/css/custom.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid bg-white">
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <!--Usage of models we wrote in WepAppController th:text="'Welcome to basic Bootstrap with Spring Boot created by ' + ${username} -->
+        <h3 th:text="'Welcome to basic Thymeleaf with Spring Boot Gym management System created by ' + ${username}"></h3>
+        <p th:text="'This date example  ' + ${#dates.format(datetime, 'dd MMM yyyy HH:mm')}"></p>
+        <p> it's a small exercise to work with Spring boot, Thymeleaf, jQuery, Bootstrap etc...</p>
+        <p>
+            <a class="btn btn-lg btn-primary" role="button" th:href="@{/login}">Get started &raquo;</a>
+        </p>
+    </div>
+</div> <!-- /container -->
+
+<!-- jQuery -->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="/webjars/fastclick/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/webjars/nprogress/nprogress.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="/js/custom.min.js"></script>
+</body>
+</html>

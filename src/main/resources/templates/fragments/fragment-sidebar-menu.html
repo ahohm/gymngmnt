@@ -1,0 +1,58 @@
+<div class="main_menu_side hidden-print main_menu" data-th-fragment="sidebar-menu" id="sidebar-menu"
+     xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <div class="menu_section">
+        <h3>General</h3>
+        <ul class="nav side-menu">
+            <li><a><i class="fa fa-user-plus"></i> ABONNE <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a th:href="@{/abonnes}">List des Abonnes</a></li>
+                    <li><a th:href="@{/addAbonne}">Ajouter abonne</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-credit-card"></i> ABONNEMENT <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a th:href="@{/abonnements}">List des Abonnements</a></li>
+                    <li><a th:href="@{/addAbonnement}">Ajouter abonnement</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-magic"></i> ENTRAINEUR <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a th:href="@{/entraineurs}">List des Entraineurs</a></li>
+                    <li><a th:href="@{/addEntraineur}">Ajouter Entraineur</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-safari"></i> DESCIPLINE <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a th:href="@{/desciplines}">List des Desciplines</a></li>
+                    <li><a th:href="@{/addDescipline}">Ajouter Descipline</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-product-hunt"></i> PRODUIT <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a th:href="@{/produits}">List des Produit</a></li>
+                    <li><a th:href="@{/addProduit}">Ajouter Entraineur</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-inbox"></i>BOITE MESSAGE <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a th:href="@{/msg}">Recue</a></li>
+                    <li><a th:href="@{/newMsg}">Nouveau msg</a></li>
+                    <li><a th:href="@{/listEnvoye}">Envoyé</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="menu_section">
+        <ul class="nav side-menu">
+            <li><a><i class="fa fa-paper-plane"></i> FACTURES <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a th:href="@{/factureAbonnement}">Abonnement</a></li>
+                    <li><a th:href="@{/factureProduit}">Produit</a></li>
+
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+</div>

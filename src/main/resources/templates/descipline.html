@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{fragments/layout}" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Plain Page</title>
+</head>
+
+<body>
+<div class="right_col" data-layout-fragment="content" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Plain Page</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Search for..." type="text">
+                        <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Descipline</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#"
+                                   role="button"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                        <table class="table table-striped"
+                               th:if="${not #lists.isEmpty(desciplines) && newdescipline == null && updatedescipline == null}">
+                            <th>
+                            <td>Libel</td>
+                            <td>Prix</td>
+                            <td>--</td>
+
+                            </th>
+                            <tr th:each="descipline: ${desciplines}">
+                                <td></td>
+                                <td th:text="${descipline.libel}">Libel</td>
+                                <td th:text="${descipline.prix}">prix</td>
+                                <td>
+                                    <div><a th:href="@{'/deleteOneDescipline/'+${descipline.id}}"><i
+                                            class="fa fa-trash-o"></i></a></div>
+                                    <div><a th:href="@{'/updateDescipline/'+${descipline.id}}"><i
+                                            class="fa fa-edit"></i></a></div>
+
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div th:if="${newdescipline != null && updatedescipline == null}">
+
+                            <form method="post" th:action="@{/savedescipline}" th:object="${newdescipline}">
+                                <div class="form-group">
+                                    <label>Libel</label>
+                                    <input class="form-control" th:field="*{libel}" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label>Prix</label>
+                                    <input class="form-control" th:field="*{prix}" type="text">
+                                </div>
+
+                                <button class="btn btn-default" type="submit">Submit</button>
+                            </form>
+
+                        </div>
+
+                        <div th:if="${ updatedescipline != null}">
+
+                            <form method="post" th:action="@{/saveupdatedescipline}" th:object="${updatedescipline}">
+                                <div class="form-group">
+                                    <label>Libel</label>
+                                    <input class="form-control" th:field="*{libel}" type="text">
+                                    <input class="form-control" hidden="true" th:field="*{id}" type="hidden"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Prix</label>
+                                    <input class="form-control" th:field="*{prix}" type="text">
+                                </div>
+
+                                <button class="btn btn-default" type="submit">Submit</button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

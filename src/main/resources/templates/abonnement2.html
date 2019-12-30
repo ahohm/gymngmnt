@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{fragments/layout}" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Plain Page</title>
+
+    <script>
+        $(document).ready(function () {
+            $("#target").click(function () {
+
+                $("#dd").val($("#ds").val());
+                $("#fd").val($("#fs").val());
+                alert($("#fd").val());
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="right_col" data-layout-fragment="content" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Plain Page</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Search for..." type="text">
+                        <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Abonnement</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#"
+                                   role="button"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+
+                        <table class="table table-striped" th:if="${not #lists.isEmpty(abonnementActiveDtos)  }">
+                            <th>
+                            <td>Nom</td>
+                            <td>Prenom</td>
+                            <td>Descipline</td>
+                            <td>Debut</td>
+                            <td>Fin</td>
+                            <td>IsActive</td>
+                            <td>--</td>
+
+                            </th>
+                            <tr th:each="abonnementActiveDto: ${abonnementActiveDtos}">
+                                <td>
+                                    <a class="user-profile "><img alt=""
+                                                                  th:src="${abonnementActiveDto.abonne.image}"></a>
+                                </td>
+                                <td th:text="${abonnementActiveDto.abonne.nom}">Nom</td>
+                                <td th:text="${abonnementActiveDto.abonne.prenom}">Prenom</td>
+                                <td th:text="${abonnementActiveDto.abonnement.descipline.libel}">Descipline</td>
+                                <td th:text="${abonnementActiveDto.abonnement.debut}">Debut</td>
+                                <td th:text="${abonnementActiveDto.abonnement.fin}">Fin</td>
+                                <td>
+                                    <span class="badge bg-red pull-right" th:if="${not abonnementActiveDto.active}">Expired</span>
+                                    <span class="badge bg-green pull-right"
+                                          th:if="${abonnementActiveDto.active}">active</span>
+                                </td>
+                                <td>
+                                    <div><a th:href="@{'/deleteAbonnement/'+${abonnementActiveDto.abonnement.id}}"><i
+                                            class="fa fa-trash-o"></i></a></div>
+
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
