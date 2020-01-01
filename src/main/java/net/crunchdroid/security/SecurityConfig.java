@@ -20,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/login**",
             "/h2-console/**",
             "/login", "/logout",
+            "/", "/welcome", "/logoutSuccessful", "/403"
 
     };
     private final String[] ANY_USER_ENDPOINT = {
@@ -27,7 +28,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     };
     private final String[] ADMIN_ENDPOINT = {
-            "/plain-page"
+            "/plain-page",
+            "/abonnements",
+            "/addAbonnement",
+            "/saveabonnement",
+            "/deleteAbonnement/**",
+            "/abonnes",
+            "/addAbonne",
+            "/saveabonne",
+            "/deleteAbonne/**",
+            "/updateAbonne/**",
+            "/saveupdateabonne",
+            "/desciplines",
+            "/addDescipline",
+            "/savedescipline",
+            "/deleteOneDescipline/**",
+            "/updateDescipline/**",
+            "/saveupdatedescipline",
+            "/entraineurs",
+            "/addEntraineur",
+            "/saveentraineur",
+            "/deleteEntraineur/**",
+            "/updateEntraineur/**",
+            "/saveupdateentraineur",
+            "/factureAbonnement",
+            "/factureProduit",
+            "/msg",
+            "/listEnvoye",
+            "/msg/**",
+            "/newMsg",
+            "/addMsg",
+            "/getOnemsg/**",
+            "/deleteMsg/**",
+            "/produits",
+            "/addProduit",
+            "/saveproduit",
+            "/deleteProduit/**",
+            "/updateProduit/**",
+            "/saveupdateproduit",
+
     };
 
     @Autowired

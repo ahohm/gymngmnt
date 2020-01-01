@@ -65,7 +65,7 @@ public class AbonneWebCtrl {
     }
 
 
-    @GetMapping("addAbonne")
+    @GetMapping("/addAbonne")
     public String getAddAbonnePage(Model model, Principal principal) {
 
         model.addAttribute("newabonne", new Abonne());

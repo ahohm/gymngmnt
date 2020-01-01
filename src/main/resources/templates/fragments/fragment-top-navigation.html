@@ -35,14 +35,14 @@
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" id="menu1" role="menu">
                         <li th:each="message:${messages}">
-                            <a>
+                            <a th:href="@{'/getOnemsg/'+${message.id}}">
                                 <span class="image"><img alt="Profile Image" th:src="${message.source.image}"/></span>
                                 <span>
                                                     <span th:text="${message.source.userName}">John Smith</span>
                                                     <span class="time" th:text="${message.dateTime.toLocalTime()}">3 mins ago</span>
                                                 </span>
                                 <span class="message" th:text="${message.object}">
-                                                    object
+                                                  object
                                                 </span>
                                 <span class="message" th:text="${message.text}">
                                                     Film festivals used to be do-or-die moments for movie makers. They were where...

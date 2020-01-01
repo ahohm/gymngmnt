@@ -42,7 +42,7 @@ public class ProduitWebCtrl {
         return "produit";
     }
 
-    @GetMapping("addProduit")
+    @GetMapping("/addProduit")
     public String getAddProduitPage(Model model, Principal principal) {
         String userName = principal.getName();
         model.addAttribute("user", appUserRepository.findByUserName(userName));

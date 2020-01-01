@@ -42,7 +42,7 @@ public class DesciplineWebCtrl {
         return "descipline";
     }
 
-    @GetMapping("addDescipline")
+    @GetMapping("/addDescipline")
     public String getAddDesciplinePage(Model model, Principal principal) {
         String userName = principal.getName();
         model.addAttribute("user", appUserRepository.findByUserName(userName));

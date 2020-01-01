@@ -46,7 +46,7 @@ public class EntraineurWebController {
         return "entraineur";
     }
 
-    @GetMapping("addEntraineur")
+    @GetMapping("/addEntraineur")
     public String getAddEntraineurPage(Model model, Principal principal) {
         String userName = principal.getName();
         model.addAttribute("user", appUserRepository.findByUserName(userName));

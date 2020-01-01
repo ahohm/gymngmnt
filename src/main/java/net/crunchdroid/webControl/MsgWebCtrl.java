@@ -107,4 +107,18 @@ public class MsgWebCtrl {
 
         return "msg";
     }
+
+    @GetMapping("/getOnemsg/{id}")
+    public String getSingleMsgPage(Model model, @PathVariable long id, Principal principal) {
+        String userName = principal.getName();
+        model.addAttribute("user", appUserRepository.findByUserName(userName));
+        List<Msg> messages = new ArrayList<>();
+        messages = msgService.findAllByDestination(appUserRepository.findByUserName(userName));
+        model.addAttribute("messages", messages);
+
+
+        model.addAttribute("msg", msgService.getOneById(id));
+
+        return "onemsg";
+    }
 }
